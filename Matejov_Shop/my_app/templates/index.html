@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/style.css">
+  <link rel="stylesheet" style="text/css" href="{% static '/css/style.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=Srisakdi&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto&display=swap" rel="stylesheet">
   <title>Matejov blog</title>
@@ -16,8 +17,8 @@
     </div>
     <nav class="nav-bar">
       <ul class="nav-bar-text">
-        <li><a href="" id="now_page">Domov</a></li>
-        <li><a href="">Produkty</a></li>
+        <li><a href="{% url 'home' }" id="now_page">Domov</a></li>
+        <li><a href="{% url 'products' %}">Produkty</a></li>
         <li><a href="">Kontakt</a></li>
       </ul>
     </nav>

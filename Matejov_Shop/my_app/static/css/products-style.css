@@ -158,3 +158,23 @@
   position: relative;
   margin: 30px;
 }
+
+.product-desc{
+  width: 300px;
+}
+
+
+/*  FOOTER OF PAGE */
+
+.end-page{
+  background-color: black;
+  height: 300px;
+}
+.end-page h2{
+  font-family: 'Inconsolata', monospace;
+  font-weight: 300;
+  display: block;
+  color: rgb(70, 70, 70);
+  text-align: center;
+  padding-top: 16%;
+}
