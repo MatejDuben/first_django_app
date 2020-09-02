@@ -19,8 +19,18 @@
   font-size: 35px;
   color: black;
   top: 30px;
-
   text-decoration: none;
+}
+
+.login{
+  position: relative;
+  width: 100%;
+  text-align: right;
+  right: 60px;
+}
+.login a{
+  text-decoration: none;
+  color: black;
 }
 
 .nav-bar{

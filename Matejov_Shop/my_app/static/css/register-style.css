@@ -5,13 +5,17 @@
 
 body{
   font-family: 'Lato', sans-serif;
-	background: #353535;
+  background: #5f5e5e;
 	color: #FFF;
 }
 
 .register-container{
+  background: #353535;
   padding-top: 2%;
   border: 5px solid #3f4546;
+  -webkit-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.75);
   position: absolute;
   width: 300px;
   height: auto;
@@ -61,6 +65,7 @@ h2{
 }
 
 .btn{
+  margin-top: 5px;
   border: solid #BDC3C7 3px;
   padding: 5px;
   font-size: 17px;
@@ -90,4 +95,11 @@ h2{
   color: rgb(73, 73, 233);
   text-decoration: none;
   margin-right: 15px;
+}
+
+.errorlist{
+  color: #111111;
+  margin-top: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
 }

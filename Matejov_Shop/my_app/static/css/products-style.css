@@ -23,6 +23,18 @@
   text-decoration: none;
 }
 
+.login{
+  position: relative;
+  width: 100%;
+  text-align: right;
+  right: 60px;
+}
+.login a{
+  text-decoration: none;
+  color: black;
+}
+
+
 .nav-bar{
   height: 50px;
   width: 70%;
@@ -159,8 +171,18 @@
   margin: 30px;
 }
 
+.product-title{
+  color: #000;
+}
+.product-title a:hover{
+  color: red;
+}
+
 .product-desc{
+  height: 37px;
   width: 300px;
+  overflow: hidden;
+  white-space: pre-wrap;
 }
 
 

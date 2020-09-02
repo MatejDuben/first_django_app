@@ -1,0 +1,135 @@
+*{
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+
+.nav-bar-UP{
+  border-top: solid rgb(104, 103, 103);
+  border-bottom: solid rgb(104, 103, 103);
+  height: 100px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin: 0 auto;
+}
+.logo{
+  position: relative;
+  font-size: 35px;
+  color: black;
+  top: 30px;
+  text-decoration: none;
+}
+
+.logout-div h4{
+  position: relative;
+  width: 100%;
+  text-align: right;
+  right: 60px;
+}
+
+.logout-div a{
+  text-decoration: none;
+  color: rgb(82, 81, 81);
+}
+
+.login{
+  position: relative;
+  width: 100%;
+  text-align: right;
+  right: 60px;
+}
+.login a{
+  text-decoration: none;
+  color: black;
+}
+
+.nav-bar{
+  height: 50px;
+  width: 70%;
+  margin: 20px auto;
+ 
+  
+}
+.nav-bar-text{
+  justify-content: space-around;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  padding-left: 30%;
+  padding-right: 30%;
+
+
+}
+.nav-bar-text li a{
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
+}
+
+.sec1{
+  position: relative;
+  width: 70%;
+  height: 75vh;
+  margin: 0 auto;
+  
+}
+
+.content-container{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.like-btn{
+  
+  text-indent: -99999;
+  display: inline-block;
+  position: relative;
+  font-size: 30px;
+  left: 20px;
+  height: 50px;
+  width: 60px;
+  background-image: url(../pic/iconfinder_heart_299063.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  
+}
+
+
+.content-text{
+  
+  display: flex;
+  flex-direction: column;
+}
+
+.content-text h1{
+  text-align: center;
+  position: relative;
+  top: 70px;
+}
+
+.content-text p{
+  width: 60%;
+  text-align: center;
+  position: relative;
+  margin:110px auto 50px;
+}
+
+.more-info {
+  width: 100%;
+  text-align: center;
+
+}
+.more-info a{
+  text-decoration: none;
+  color: rgb(73, 73, 73);
+  transition: 0.4s;
+}
+.more-info a:hover{
+  color:black;
+  transition: 0.4s;
+}
+

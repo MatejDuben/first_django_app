@@ -1,0 +1,104 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+
+body{
+  font-family: 'Lato', sans-serif;
+	background: #5f5e5e;
+	color: #FFF;
+}
+
+.login-container{
+  background: #353535;
+  padding-top: 2%;
+  border: 5px solid #3f4546;
+  -webkit-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 45px 0px rgba(0,0,0,0.75);
+  position: absolute;
+  width: 300px;
+  height: auto;
+  left: 42%;
+  right: auto;
+  top: 20%;
+  padding-bottom: 30px;
+}
+
+.label{
+  color: #878888;
+}
+
+h2{
+  color: #BDC3C7;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  font-size: 35px;
+}
+
+.text-input{
+  top: 30px;
+  text-align: center;
+  position: relative;
+  display: block;
+  
+}
+
+.text-input input{
+  margin: 5px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  padding-left: 10px;
+}
+
+/* SUBMIT BUTTON */
+
+.submit-container{
+ 
+  position: relative;
+  margin-top: 45px;
+  text-align: center;
+  padding-right: 0px;
+
+}
+
+.btn{
+  border: solid #BDC3C7 3px;
+  padding: 5px;
+  font-size: 17px;
+  font-family: 'Lato', sans-serif;
+  transition: ease-in 0.3s;
+}
+
+.btn:hover{
+  border-color: #1a1c1d;
+  background: rgb(151, 151, 151);
+  transition: ease-in 0.3s;
+}
+
+
+.register-link{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 20px;
+  margin: 10px;
+}
+
+
+.register-link a{
+  position: relative;
+  left: 20px;
+  color: rgb(73, 73, 233);
+  text-decoration: none;
+  margin-right: 15px;
+}
+
+
+#messages{
+  margin-top: 45px;
+  margin-left: 15px;
+  margin-right: 15px;
+}

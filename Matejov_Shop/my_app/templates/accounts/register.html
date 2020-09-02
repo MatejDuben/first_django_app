@@ -12,7 +12,7 @@
     <div class="register-container">
 
       <h2>Register</h2>
-      <form action="" method="post">
+      <form action="" method="post" name="Create_User">
         {% csrf_token %}
         <div class="text-input"> 
           
@@ -33,10 +33,14 @@
         <div class="text-input"> 
           <div class="label">{{form.password2.label}}</div>
           {{form.password2}}
+         <p class="label">Password must be longer than 8 elements.</p>
+
+          {{form.errors}}
+
 
         </div>
         
-        <div class="submit-container"> <button class="btn">Create Account</button> </div>
+        <div class="submit-container"> <button class="btn" type="submit" name="Create_User">Create Account</button> </div>
       </form>
 
       <div class="log-in">

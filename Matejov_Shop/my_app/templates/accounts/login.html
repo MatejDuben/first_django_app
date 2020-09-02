@@ -1,3 +1,39 @@
-<h1>
-  login
-</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../../static/css/login-style.css">
+  <title>Login</title>
+</head>
+<body>
+  <div class="login-container">
+
+    <h2>Log In</h2>
+    <form action="" method="post">
+      {% csrf_token %}
+      <div class="text-input">
+        <input type="text" name="username" placeholder="Username">
+      </div>
+
+      <div class="text-input">
+        <input type="password" name="password" placeholder="password">
+      </div>
+
+      {% for message in messages %}
+        <p id="messages">{{message}}</p>
+      {% endfor %}
+
+      <div class="submit-container"> <button class="btn">Log in</button> </div>
+    </form>
+      
+    <div class="register-link">
+      <p>haven't account yet?</p>
+      <a href="{% url 'account:register' %}">sing Up</a>
+    </div>
+    
+
+  </div>
+</body>
+</html>

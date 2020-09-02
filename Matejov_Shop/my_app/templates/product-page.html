@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/product-page-style.css' %}">
+  <title>Product {{product.product_title}} </title>
+</head>
+<body>
+  <header>
+
+    <div class="nav-bar-UP">
+      <h2><a href="#" class="logo" >Matejov Blog</a></h2>
+      <div class="logout-div">
+        <h4>hello, {{request.user}}</h4>
+        <h4><a href="{% url 'account:logout' %}">logut</a></h4>
+             
+      </div>
+
+    </div>
+
+
+    <nav class="nav-bar">
+      <ul class="nav-bar-text">
+        <li><a href="{% url 'homePage:home' %}">Domov</a></li>
+        <li><a href="{% url 'productPage:products' %}" >Produkty</a></li>
+        <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto&display=swap" rel="stylesheet">
+        <li><a href="">Kontakt</a></li>
+      </ul>
+    </nav>
+    </div>
+  </header>
+
+  <section class="sec1">
+    
+    <div class="content-container">
+      <div>
+        <img src="{{product.product_image.url}}" alt="" style="height: 500px; width: 500px;">
+        <a class="like-btn" href="#"></a>
+      </div>
+      <div class="content-text">
+        <h1>{{product.product_title}}</h1>
+        <p>{{product.product_description}}</p>
+      </div>
+    </div>
+    
+  <h2 class="more-info"><a href="">Zisti viac</a></h2>
+
+  </section>
+
+
+
+
+</body>
+</html>
