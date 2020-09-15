@@ -1,14 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
+from django.contrib.auth.models import User
+from django.utils import timezone
 
 
-from .models import Product
+from .models import Product, FavoriteProduct
 from .forms import CreateUserForm
-from .decorators import unauthenticated_user
+from .decorators import unauthenticated_page_for_logged_user, unauthenticated_page_for_unlogged_user
+
+import random
 
 def home(request): #nie som prihlaseny
   
@@ -21,34 +26,7 @@ def logged_home(request): #uz som prihlaseny
   return render(request, 'accounts/logged-page.html')
 '''
 
-def products(request):
-
-  p = Product.objects.all()
-
-
-  context={
-    "product": p,
-  }
-  
-  return render(request, 'products.html', context)
-
-def productPage(request, product_id, product_title_url):
-  p = Product.objects.get(id=product_id)
-  context={
-    "product": p,
-  }
-
-  return render(request, "product-page.html", context)
-
-
-
-def LikedProductsPage(request):
-
-
-
-
-  return render(request, "liked-products-page.html")
-
+#REGISTE AND LOGIN AND LOGOUT SECTION
 
 def registerPage(request):
   form = CreateUserForm()
@@ -68,7 +46,7 @@ def registerPage(request):
   return render(request, 'accounts/register.html', context)
 
 
-@unauthenticated_user
+@unauthenticated_page_for_logged_user
 def loginPage(request):
   if request.method == 'POST':
     username = request.POST.get('username')
@@ -92,3 +70,79 @@ def loginPage(request):
 def logoutUser(request):
   logout(request)
   return redirect('homePage:home')
+
+
+
+#OTHER VIEW PAGES
+
+def products(request):
+
+  p = Product.objects.all()
+
+
+  context={
+    "product": p,
+  }
+  
+  return render(request, 'products.html', context)
+
+
+@unauthenticated_page_for_unlogged_user
+def productPage(request, product_id, product_title_url):
+  p = Product.objects.get(id=product_id)
+  
+  
+  #kazdy refresh stranky sa stane toto 
+  products = Product.objects.all()
+  random_three_products = random.choices(products, k=3)
+ 
+  user = request.user
+  current_time = timezone.now()
+  #print(user)
+
+  context={
+   "product": p,
+   "sliderProducts": random_three_products,
+  }
+
+  
+  if request.method == 'POST' and not FavoriteProduct.objects.filter(who_liked=user).exists(): #Toto vytvori usera a prida mu aj konkretny produkt do favorites
+    
+    FavoriteProduct.objects.create(who_liked=user, added_date=current_time).save()
+    favorite = get_object_or_404(FavoriteProduct, who_liked=user)
+    favorite.favorite_product.add(p)
+    print(favorite)
+    
+  elif request.method == 'POST' and FavoriteProduct.objects.filter(who_liked=user).exists(): #ak uz user je vytvoreny toto mu prida konkretny produkt do favorites
+    favorite = get_object_or_404(FavoriteProduct, who_liked=user)
+    print( favorite)
+    favorite.favorite_product.add(p)
+
+    return render(request, "product-page.html", context) 
+    
+  return render(request, "product-page.html", context)
+
+
+@unauthenticated_page_for_unlogged_user
+def FavoriteProductsPage(request):
+  
+  user = request.user  #zoberie pouzivatela ktory je teraz prihlaseny
+  #print(FavoriteProduct.objects.get(who_liked=user))
+
+  logged_user = FavoriteProduct.objects.filter(who_liked=user).first()
+
+  object_not_exist = not FavoriteProduct.objects.filter(who_liked=user).exists()
+  
+  if request.method == "GET":
+    
+    favorites = logged_user.favorite_product.all()
+    latest_favorites = logged_user.favorite_product.all()[0:3]  #  logged_user.favorite_product.order_by('added_date')[:3]
+    print(latest_favorites)
+  context={
+    'latest_favorites':latest_favorites,
+    'favorites': favorites,
+    'object_not_exist':object_not_exist,
+  }
+  
+  return render(request, 'liked-products-page.html', context)
+

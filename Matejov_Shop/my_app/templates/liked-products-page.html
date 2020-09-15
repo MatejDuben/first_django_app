@@ -1,11 +1,104 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/liked-products-page-style.css">
+
+  <!-- AOS animation link -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
   <title>Favorites</title>
 </head>
 <body>
-  <h1>Welcome here!</h1>
+
+  <header>
+    
+    <div class="nav-bar-UP">
+      <h2><a href="#" class="logo" >Matejov Blog</a></h2>
+      
+      <div>
+        {% if user.is_authenticated %}
+          <h4 class="logged-user" >hello, {{request.user}}</h4>
+          <h4 class="logout" ><a href="{% url 'account:logout' %}">logut</a></h4>
+        
+          {% else %}
+          <h3 class="login"><a href="{% url 'account:login' %}">Log In</a></h3>
+        {% endif %}
+          
+      </div>
+
+    </div>
+
+    <nav class="nav-bar">
+      <ul class="nav-bar-text">
+        <li><a href="{% url 'homePage:home' %}" >Domov</a></li>
+        <li><a href="{% url 'productPage:products' %}">Produkty</a></li>
+        <li><a href="">Kontakt</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'likedPage' %}" id="now_page">Favorites</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+
+    <section class="sec-1">
+
+      <div class="latest-container" data-aos="flip-left">
+        <h2 >LATEST</h2>
+
+        {% if object_not_exist %}
+          <h1>You haven't liked products yet </h1>
+
+        {% else %}
+          <div class="products">
+            <ol class="product">
+              {% for favorites in latest_favorites %}
+              <li>{{favorites}}</li>
+              {% endfor %}
+            </ol>
+
+          </div>
+        {% endif %}
+
+      </div>
+
+
+    </section>
+
+    <div class="hero-box"></div>
+
+    <section class="sec-2">
+     
+      <h2 class="other-posts-h2" >Other Posts</h2>
+      <div class="other-container" data-aos="fade-down">
+        {% if object_not_exist %}
+          <h1>You haven't liked products yet </h1>
+
+        {% else %}
+          <div class="products">
+            <ol class="product">
+              {% for favorite in favorites %}
+                <li>{{favorite}}</li>
+              {% endfor %}
+            </ol>
+          </div>
+
+        {% endif %}
+
+      </div>
+    </section>
+
+
+   <!-- AOS Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+
 </body>
+
+
+
 </html>

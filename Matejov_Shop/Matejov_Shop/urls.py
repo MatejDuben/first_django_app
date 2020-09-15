@@ -25,7 +25,7 @@ urlpatterns = [
     path('home/', include("my_app.urls_home")),
     path('products/', include("my_app.urls_products")),
     path('account/', include("my_app.urls_account")),
-    path('favorite-products/', views.LikedProductsPage, name='likedPage'),
+    path('favorite-products/', views.FavoriteProductsPage, name='likedPage'),
     path('admin/', admin.site.urls),
 ]
 

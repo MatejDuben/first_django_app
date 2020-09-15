@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="../static/css/products-style.css">
+
+  <!-- AOS animation link -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
   <title>Products</title>
 </head>
 <body>
@@ -14,15 +18,14 @@
       <h2><a href="#" class="logo" >Matejov Blog</a></h2>
       <div>
         {% if user.is_authenticated %}
-          <h4>hello, {{request.user}}</h4>
-          <h4><a href="{% url 'account:logout' %}">logut</a></h4>
+          <h4 class="logged-user" >hello, {{request.user}}</h4>
+          <h4 class="logout" ><a href="{% url 'account:logout' %}">logut</a></h4>
         
           {% else %}
           <h3 class="login"><a href="{% url 'account:login' %}">Log In</a></h3>
         {% endif %}
           
       </div>
-
     </div>
 
 
@@ -32,6 +35,9 @@
         <li><a href="{% url 'productPage:products' %}" id="now_page">Produkty</a></li>
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto&display=swap" rel="stylesheet">
         <li><a href="">Kontakt</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'likedPage' %}" >Favorites</a></li>
+        {% endif %}
       </ul>
     </nav>
     </div>
@@ -91,10 +97,12 @@
   
   <section class="sec_products">
 
-    <div class="product-container">
+    <h2 class="subtitle"> <a href="#products">See more products </a></h2>
+
+    <div class="product-container" id="products">
 
       {% for p in product %}
-        <div class="product-img">
+        <div class="product-img" >
           <img src="{{p.product_image.url}}" alt="" style="width: 300px; height: 300px;" >
 
           <label for="">
@@ -120,31 +128,21 @@
   </footer>
 
 
+ <!-- AOS Scripts -->
+ <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+ <script>
+  AOS.init();
+  AOS.init({
+    
+    offset: 100,
+    
+  
+  });
+
+
+</script>
+
 </body>
 
-<style>
-  h4{
-    position: relative;
-    width: 100%;
-    text-align: right;
-    right: 60px;
-  }
 
-  a{
-    text-decoration: none;
-    color: rgb(82, 81, 81);
-  }
-  
-  .login{
-    position: relative;
-    width: 100%;
-    text-align: right;
-    right: 60px;
-  }
-  .login a{
-    text-decoration: none;
-    color: black;
-  }
- 
-</style>
 </html>

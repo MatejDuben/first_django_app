@@ -7,6 +7,9 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
   <link href="https://fonts.googleapis.com/css2?family=Srisakdi&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto&display=swap" rel="stylesheet">
+  <!-- AOS animation link -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  
   <title>Matejov blog</title>
 </head>
 <body>
@@ -18,8 +21,8 @@
       
       <div>
         {% if user.is_authenticated %}
-          <h4>hello, {{request.user}}</h4>
-          <h4><a href="{% url 'account:logout' %}">logut</a></h4>
+          <h4 class="logged-user" >hello, {{request.user}}</h4>
+          <h4 class="logout" ><a href="{% url 'account:logout' %}">logut</a></h4>
         
           {% else %}
           <h3 class="login"><a href="{% url 'account:login' %}">Log In</a></h3>
@@ -34,7 +37,9 @@
         <li><a href="{% url 'homePage:home' %}" id="now_page">Domov</a></li>
         <li><a href="{% url 'productPage:products' %}">Produkty</a></li>
         <li><a href="">Kontakt</a></li>
-     
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'likedPage' %}" >Favorites</a></li>
+        {% endif %}
       </ul>
     </nav>
     
@@ -44,44 +49,54 @@
     </div>
   </header>
 
-  <section class="section_1">
-    <figure class="subimages">
-      <img src="../static/pic/alexandru-acea--WBYxmW4yuw-unsplash.jpg" alt="" style="width: 300px; height: 300px;">
-      <figcaption>
-        <h3>Programator</h3>
-        <p>Rad programujem od asi 10 rokov, <br> takže už 4 roky. </p>
-      </figcaption>
-    </figure>
-
-    <figure class="subimages">
-      <img src="../static/pic/adrien-VD9Hsvg3DVQ-unsplash.jpg" alt="" style="width: 300px; height: 300px;">
-      <figcaption>
-        <h3>Moj mobil je Samsung A71</h3>
-        <p>Moj telefon na ktorom travim <br>  celkovo dost casu.</p>
-      </figcaption>
-    </figure>
-
-    <figure class="subimages">
-      <img src="../static/pic/aquariomscape.jpg" alt="" style="width: 300px; height: 300px;">
-      <figcaption>
-        <h3>Moje hobby</h3>
-        <p>Pred casom som si zalozil 2 akvaria.</p>
-      </figcaption>
-    </figure>
+  <section class="section_1" >
     
+    <div class="img-bg">
+      <figure class="subimages" data-aos="fade-right" data-aos-duration="2000">
+        <img src="../static/pic/alexandru-acea--WBYxmW4yuw-unsplash.jpg" alt="" style="width: 300px; height: 300px;">
+        <figcaption>
+          <h3>Programator</h3>
+          <p>Rad programujem od asi 10 rokov, <br> takže už 4 roky. </p>
+        </figcaption>
+      </figure>
+
+      <figure class="subimages" data-aos="fade-down" data-aos-duration="2000">
+        <img src="../static/pic/adrien-VD9Hsvg3DVQ-unsplash.jpg" alt="" style="width: 300px; height: 300px;">
+        <figcaption>
+          <h3>Moj mobil je Samsung A71</h3>
+          <p>Moj telefon na ktorom travim <br>  celkovo dost casu.</p>
+        </figcaption>
+      </figure>
+
+      <figure class="subimages" data-aos="fade-left" data-aos-duration="2000">
+        <img src="../static/pic/aquariomscape.jpg" alt="" style="width: 300px; height: 300px;">
+        <figcaption>
+          <h3>Moje hobby</h3>
+          <p>Pred casom som si zalozil 2 akvaria.</p>
+        </figcaption>
+      </figure>
+    </div>
   </section>
   
   <section class="section_2">
     <div class="about_me">
-      <h2>Toto som ja</h2>
-      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-        um, praesentium dolorum fugit quam dolor ut 
-        voluptates tenetur animi quisquam iste aliquam deleniti 
-        eum voluptatem doloremque sequi eveniet, aliquid corrupti
-        error.</p>
+      <img src="../static/pic/IMG_20200729_220115_371.jpg" class="about-img" alt="" style="width: 400px; height: 500px;">
+      
+      <img src="../static/pic/vertical_line.png" class="vertical-line" alt="" >
+      
+      <figcaption class="text-about_me">
+
+        <h2>Toto som ja</h2>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+          um, praesentium dolorum fugit quam dolor ut 
+          voluptates tenetur animi quisquam iste aliquam deleniti 
+          eum voluptatem doloremque sequi eveniet, aliquid corrupti
+          error.</p>
+      </figcaption>
+
     </div>
 
-    <img src="../static/pic/IMG_20200729_220115_371.jpg" alt="" style="width: 300px; height: 400px;">
+    
   </section>
   
 
@@ -90,24 +105,26 @@
   </footer>
 
 
+ <!-- AOS Scripts -->
+ <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+ <script>
+   AOS.init();
 
+  AOS.init({
+    
+    offset: 250,
+    
+  
+  });
+
+
+
+ </script>
 
 
 </body>
 
-  <style>
-    h4{
-      position: relative;
-      width: 100%;
-      text-align: right;
-      right: 60px;
-    }
-
-    a{
-      text-decoration: none;
-      color: rgb(82, 81, 81);
-    }
-  </style>
+  
 
 
 </html>

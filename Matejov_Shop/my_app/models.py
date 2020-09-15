@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Product(models.Model):
@@ -8,4 +9,9 @@ class Product(models.Model):
 
   def __str__(self):
     return self.product_title
+  
 
+class FavoriteProduct(models.Model):
+  who_liked = models.ForeignKey(User, on_delete=models.CASCADE)
+  favorite_product = models.ManyToManyField(Product, related_name="favorite_post")
+  added_date = models.DateTimeField('date_added')

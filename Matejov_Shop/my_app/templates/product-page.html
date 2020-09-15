@@ -5,6 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/product-page-style.css' %}">
+
+  
   <title>Product {{product.product_title}} </title>
 </head>
 <body>
@@ -12,6 +14,7 @@
 
     <div class="nav-bar-UP">
       <h2><a href="#" class="logo" >Matejov Blog</a></h2>
+      
       <div class="logout-div">
         <h4>hello, {{request.user}}</h4>
         <h4><a href="{% url 'account:logout' %}">logut</a></h4>
@@ -27,17 +30,25 @@
         <li><a href="{% url 'productPage:products' %}" >Produkty</a></li>
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto&display=swap" rel="stylesheet">
         <li><a href="">Kontakt</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'likedPage' %}" id="now_page">Favorites</a></li>
+        {% endif %}
       </ul>
     </nav>
     </div>
   </header>
-
+  
   <section class="sec1">
     
     <div class="content-container">
       <div>
         <img src="{{product.product_image.url}}" alt="" style="height: 500px; width: 500px;">
-        <a class="like-btn" href="#"></a>
+        
+        <form action="" method="post" >
+          {% csrf_token %}
+            <button class="like-btn" ></button>
+        </form>
+
       </div>
       <div class="content-text">
         <h1>{{product.product_title}}</h1>
@@ -45,12 +56,31 @@
       </div>
     </div>
     
-  <h2 class="more-info"><a href="">Zisti viac</a></h2>
 
   </section>
 
+  <section class="sec2">
+    <h2 class="more-info"><a href="{% url 'productPage:products' %}">Zisti viac</a></h2>
 
+    <div class="otehr-products-container">
+
+      {% for p in sliderProducts %}
+
+        <div class="img-container">
+          <img src="{{p.product_image.url}}" alt="" style="height: 300; width: 300px;">
+          <h3 class="product-title">{{p}}</h3>
+        </div>
+      {% endfor %}
+
+    </div>
+    
+  </section>
 
 
 </body>
+
+
+
+
+
 </html>
