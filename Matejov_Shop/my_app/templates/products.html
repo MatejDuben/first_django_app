@@ -43,84 +43,100 @@
     </div>
   </header>
 
-  <div class="container">
+  <section class="sec1" >
 
-    <input type="radio" name="images" id="i1" checked>
-    <input type="radio" name="images" id="i2">
-    <input type="radio" name="images" id="i3">
+    <div class="container">
 
-    <div class="slide-img" id="one">
-      <img src="../static/pic/sliderimg1.jpg">
+      <input type="radio" name="images" id="i1" checked>
+      <input type="radio" name="images" id="i2">
+      <input type="radio" name="images" id="i3">
 
-        <label for="i3" class="per"> 
-          <h2> < </h2>
-        </label>
-        <label for="i2" class="nxt"> 
-          <h2> > </h2>
-        </label>
+      <div class="slide-img" id="one">
+        <img src="../static/pic/sliderimg1.jpg">
+
+          <label for="i3" class="per"> 
+            <h2> < </h2>
+          </label>
+          <label for="i2" class="nxt"> 
+            <h2> > </h2>
+          </label>
+
+      </div>
+
+      <div class="slide-img" id="two">
+        <img src="../static/pic/sliderimg2.jpg">
+
+          <label for="i1" class="per"> 
+            <h2> < </h2>
+          </label>
+          <label for="i3" class="nxt"> 
+            <h2> > </h2>
+          </label>
+      </div>
+
+      <div class="slide-img" id="three">
+        <img src="../static/pic/ma">
+
+          <label for="i2" class="per"> 
+            <h2> < </h2>
+          </label>
+          <label for="i1" class="nxt"> 
+            <h2> > </h2>
+          </label>
+      </div>
+
+      <div class="container-nav">
+        <label for="i1" class="dots" id="dot1"></label>
+        <label for="i2" class="dots" id="dot2"></label>
+        <label for="i3" class="dots" id="dot3"></label>
+
+
+      </div>
+
 
     </div>
-
-    <div class="slide-img" id="two">
-      <img src="../static/pic/sliderimg2.jpg">
-
-        <label for="i1" class="per"> 
-          <h2> < </h2>
-        </label>
-        <label for="i3" class="nxt"> 
-          <h2> > </h2>
-        </label>
-    </div>
-
-    <div class="slide-img" id="three">
-      <img src="../static/pic/ma">
-
-        <label for="i2" class="per"> 
-          <h2> < </h2>
-        </label>
-        <label for="i1" class="nxt"> 
-          <h2> > </h2>
-        </label>
-    </div>
-
-    <div class="container-nav">
-      <label for="i1" class="dots" id="dot1"></label>
-      <label for="i2" class="dots" id="dot2"></label>
-      <label for="i3" class="dots" id="dot3"></label>
-
-
-    </div>
-
-
-  </div>
-
-  
-  <section class="sec_products">
 
     <h2 class="subtitle"> <a href="#products">See more products </a></h2>
 
-    <div class="product-container" id="products">
-
-      {% for p in product %}
-        <div class="product-img" >
-          <img src="{{p.product_image.url}}" alt="" style="width: 300px; height: 300px;" >
-
-          <label for="">
-            {% if user.is_authenticated %} <!-- ak je user prihlaseny ,moze kliknut na odkaz inak napoise error -->
-            
-            <h1 class="product-title" ><a href="{% url 'productPage:thisProduct' p.id p.product_title %}"> {{p.product_title}}</a></h1>
-
-            {% else %}
-            <h1 class="product-title" >{{p.product_title}}</h1>
-
-            {% endif %}
-            <p class="product-desc" >{{p.product_description}}</p>
-
-          </label>
-        </div>
-      {% endfor %}
-
   </section>
+  
+  <section class="sec_products">
+    
+    <div class="bg-products">
+
+      <div class="product-container" id="products">
+
+        {% for p in product %}
+          <div class="product-img" >
+            <img src="{{p.product_image.url}}" alt="" style="width: 300px; height: 300px;" >
+
+            <label for="">
+              {% if user.is_authenticated %} <!-- ak je user prihlaseny ,moze kliknut na odkaz inak napoise error -->
+              
+              <h1 class="product-title" ><a href="{% url 'productPage:thisProduct' p.id p.product_title %}"> {{p.product_title}}</a></h1>
+
+              {% else %}
+              <h1 class="product-title" >{{p.product_title}}</h1>
+
+              {% endif %}
+              <p class="product-desc" >{{p.product_description}}</p>
+
+            </label>
+          </div>
+        {% endfor %}
+    </div>
+  </section>
+
+  {% if not user.is_authenticated %}
+    <section class="sec3">
+      
+      <div class="text-to-login">
+        <p>Ak si chcete bližšie pozrieť naše produkty prihláste sa.</p>
+        <a href="{% url 'account:login' %}">Log in</a>
+      </div>
+
+    </section>
+  {% endif %}
 
 
   <footer class="end-page">
@@ -141,6 +157,10 @@
 
 
 </script>
+
+{% if not user.is_authenticated %}
+ <script src="../static/JavaScript/user_not_loggin_message_script.js"></script>
+{% endif %}
 
 </body>
 

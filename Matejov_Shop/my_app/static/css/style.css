@@ -5,6 +5,8 @@
 }
 
 
+
+
 .nav-bar-UP{
   border-top: solid rgb(104, 103, 103);
   border-bottom: solid rgb(104, 103, 103);
@@ -118,8 +120,7 @@
   
   margin-top: 50%;
   align-items: center;
-  justify-content: space-evenly;
-  
+    
   padding: 50px;
   
 }
@@ -133,7 +134,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
-  align-items: center;
   justify-content: space-evenly;
   width: 75%;
   height: 100%;
@@ -145,16 +145,20 @@
 
 }
 
+
+
 .subimages figcaption{
   font-size: 20px;
   text-align: center;
   color: #f1f3f8;
+  width: 300px;
 }
 .subimages figcaption h3{
   color: #f1f3f8;
 }
 .subimages figcaption p{
   color: #dddddd;
+  
 }
 
 

@@ -2,7 +2,9 @@
   font-family: Arial, Helvetica, sans-serif;
   margin: 0px;
   padding: 0px;
+  scroll-behavior: smooth;
 }
+
 
 
 .nav-bar-UP{
@@ -176,6 +178,26 @@
   background: #fff;
 }
 
+
+/* PRODUCTS SEC */
+
+.bg-products{
+  background: #52575d;
+}
+
+.subtitle{
+  font-size: 30px;
+  margin-top: 50px;
+  text-align: center;
+}
+.subtitle a{
+  text-decoration: none;
+  color: #2c2c2c;
+  transition: 0.3s;
+}
+.subtitle a:hover{
+  color: #000;
+}
 
 .product-container{
   display: flex;
