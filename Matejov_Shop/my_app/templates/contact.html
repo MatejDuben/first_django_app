@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/contact-style.css' %}">
+  <title>Kontakt</title>
+</head>
+<body>
+  
+  <header>
+    
+    <div class="nav-bar-UP">
+      <h2><a href="#" class="logo" >Matejov Blog</a></h2>
+      
+      <div>
+        {% if user.is_authenticated %}
+          <h4 class="logged-user" >hello, {{request.user}}</h4>
+          <h4 class="logout" ><a href="{% url 'account:logout' %}">logut</a></h4>
+        
+          {% else %}
+          <h3 class="login"><a href="{% url 'account:login' %}">Log In</a></h3>
+        {% endif %}
+          
+      </div>
+
+    </div>
+
+    <nav class="nav-bar">
+      <ul class="nav-bar-text">
+        <li><a href="{% url 'homePage:home' %}" >Domov</a></li>
+        <li><a href="{% url 'productPage:products' %}">Produkty</a></li>
+        <li><a href="{% url 'contactPage' %}" id="now_page">Kontakt</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'likedPage' %}" >Obľubené</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+        
+  </header>
+
+
+  <section class="contact-sec">
+
+    <div class="head-line">
+      <span>
+        <h1>Kontaktuj nás</h1>
+      </span>
+      <!--IMG alebo neco ako horizontal line -->
+      <h2>Radi pomôžeme!</h2>
+      <h3>Ak potrebuješ s niečím pomôcť môžeš nám tu napísať</h3>
+    </div>
+
+    <div class="contact-container">
+      
+      <div class="input-container">
+        <form action="" method="post">
+          {% csrf_token %}
+            <input type="text" name="email-name" id="" class="input-name" placeholder="Your name">
+            <input type="email" name="email" id="" placeholder="Email">
+            <textarea name="email-message" id="" cols="30" rows="10" class="input-text" placeholder="Text"></textarea>
+            <button type="submit"  class="input-btn" > Submit</button>
+        </form>
+      </div>
+
+      <div class="contact-container-right-side">
+        <div class="contact-info">
+        
+          <figure>
+            <img src="../static/pic/locate-icon.png" alt="" style="width: 30px; height: 35px;" >
+            <figcaption>
+              <h2>this is our location.</h2>
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="../static/pic/phone-icon.png" alt="" style="width: 30px; height: 35px;" >
+            <figcaption>
+              <h2>+421 917 205 468</h2>
+            </figcaption>
+          </figure>
+
+          <figure>
+            <img src="../static/pic/phone-icon.png" alt="" style="width: 30px; height: 35px;" >
+            <figcaption>
+              <h2>youremalwillbehere@gmail.com</h2>
+            </figcaption>
+          </figure>
+        </div>
+        <div class="social-sites">
+          <img src="../static/pic/instagram-logo.png" alt="" style="width: 32px;height: 32px;">
+          <img src="../static/pic/facebook.png" alt="" style="width: 32px;height: 32px;">
+          <img src="../static/pic/linkedin.png" alt="" style="width: 32px;height: 32px;">
+          <img src="../static/pic/youtube.png" alt="" style="width: 32px;height: 32px;">
+        </div>
+        
+
+      </div>
+    </div>
+
+  </section>
+
+
+
+</body>
+
+
+</html>

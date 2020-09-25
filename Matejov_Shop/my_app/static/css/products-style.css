@@ -214,10 +214,9 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  width: 70%;
-  margin-left: 15%;
- 
-  padding-top: 7%;
+  width: 80%;
+  margin: 0 auto;
+
 }
 
 .product-img{
@@ -227,7 +226,7 @@
 }
 
 .product-title{
-  color: #000;
+  color: #d6e0f0;
 }
 
 .product-title a{
@@ -266,9 +265,7 @@
   padding-top: 125px;
   
 }
-.text-to-login a{
-  
-}
+
 
 /*  FOOTER OF PAGE */
 

@@ -26,6 +26,7 @@ urlpatterns = [
     path('products/', include("my_app.urls_products")),
     path('account/', include("my_app.urls_account")),
     path('favorite-products/', views.FavoriteProductsPage, name='likedPage'),
+    path('contact/', views.contact_Page, name='contactPage'),
     path('admin/', admin.site.urls),
 ]
 

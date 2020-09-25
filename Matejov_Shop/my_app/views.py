@@ -7,17 +7,30 @@ from django.contrib.auth.decorators import login_required
 from django.urls import reverse
 from django.contrib.auth.models import User
 from django.utils import timezone
-
+from django.core.mail import send_mail
+from django.conf import settings
 
 from .models import Product, FavoriteProduct
-from .forms import CreateUserForm
+from .forms import CreateUserForm, ProductForm
 from .decorators import unauthenticated_page_for_logged_user, unauthenticated_page_for_unlogged_user
 
 import random
 
 def home(request): #nie som prihlaseny
   
-  return render(request, 'index.html')
+  if request.user.is_authenticated:
+    logge_user = request.user
+    user= User.objects.get(username=logge_user)
+    admin_logged = user.is_superuser
+    return render(request, 'index.html', {'superuser':admin_logged,})
+
+  else:
+    return render(request, 'index.html' )
+  
+
+  
+
+  
 
 '''
 @login_required(login_url='home')
@@ -133,16 +146,47 @@ def FavoriteProductsPage(request):
 
   object_not_exist = not FavoriteProduct.objects.filter(who_liked=user).exists()
   
-  if request.method == "GET":
-    
-    favorites = logged_user.favorite_product.all()
-    latest_favorites = logged_user.favorite_product.all()[0:3]  #  logged_user.favorite_product.order_by('added_date')[:3]
-    print(latest_favorites)
+  if request.method == 'GET':
+
+    if not FavoriteProduct.objects.filter(who_liked=user).exists():
+      return render(request, 'fav-obj-not-found.html')
+     # return  HttpResponse("<h1>"+"ERROR, any object here!"+"</h1>")
+    else:
+      favorites = logged_user.favorite_product.all()
+      latest_favorites = logged_user.favorite_product.all()[0:3]  #  logged_user.favorite_product.order_by('added_date')[:3]
+      print(latest_favorites)
+  
+  
   context={
     'latest_favorites':latest_favorites,
     'favorites': favorites,
-    'object_not_exist':object_not_exist,
   }
   
   return render(request, 'liked-products-page.html', context)
 
+
+
+def contact_Page(request):
+  #nefunguje
+
+  return render(request, 'contact.html')
+
+
+def admin_properties(request):
+  
+  if request.method == 'POST': 
+    form = ProductForm(request.POST, request.FILES) 
+  
+    if form.is_valid(): 
+      form.save() 
+      return HttpResponse("<h1>"+'successfully uploaded'+'</h1>') 
+  else: 
+    form = ProductForm() 
+    return render(request, 'admin-page.html', {'form' : form}) 
+  
+  
+  
+
+
+
+  

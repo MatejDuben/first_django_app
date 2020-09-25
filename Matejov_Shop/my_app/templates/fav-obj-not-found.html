@@ -1,0 +1,101 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../static/css/liked-products-page-style.css">
+  <!-- AOS animation link -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!--GOOGLE FONTS-->
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital@1&display=swap" rel="stylesheet">
+
+  <title>Error</title>
+</head>
+<body>
+
+  <header>
+    
+    <div class="nav-bar-UP">
+      <h2><a href="#" class="logo" >Matejov Blog</a></h2>
+      
+      <div>
+        {% if user.is_authenticated %}
+          <h4 class="logged-user" >hello, {{request.user}}</h4>
+          <h4 class="logout" ><a href="{% url 'account:logout' %}">logut</a></h4>
+        
+          {% else %}
+          <h3 class="login"><a href="{% url 'account:login' %}">Log In</a></h3>
+        {% endif %}
+          
+      </div>
+
+    </div>
+
+    <nav class="nav-bar">
+      <ul class="nav-bar-text">
+        <li><a href="{% url 'homePage:home' %}" >Domov</a></li>
+        <li><a href="{% url 'productPage:products' %}">Produkty</a></li>
+        <li><a href="{% url 'contactPage' %}">Kontakt</a></li>
+        {% if user.is_authenticated %}
+          <li><a href="{% url 'likedPage' %}" id="now_page">Obľubené</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <div class="error-container">
+    <h2 class="error-message">Ups, vyzerá to že ešte nemáš žiadny obľúbený produkt</h2>
+    <img src="../static/pic/NicePng_robot-vector-png_3283877.png" alt="">
+
+
+    <h2 class="product-link">
+      Klikni <a href="{% url 'productPage:products' %}">sem</a>
+    </h2>
+
+  </div>
+
+</body>
+
+<style>
+
+  .error-container{
+    text-align: center;
+    background: #ecf7c5;
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+    
+  }
+  .error-message{
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif; 
+    padding-top: 30px;
+  }
+
+  .error-container img{
+    padding: 30px;
+    position: relative;
+    margin-top: 20px;
+    height: 200px;
+    width: 350px;
+  }
+
+  .product-link{
+    font-weight: 400;
+    font-family: 'Open Sans', sans-serif; 
+    
+  }
+  .product-link a{
+    color: #52575d;
+    transition: 0.3s ease-in-out;
+  }
+  .product-link a:hover{
+    transition: 0.3s ease-in-out;
+    color: #000;
+  }
+
+</style>
+
+
+</html>
