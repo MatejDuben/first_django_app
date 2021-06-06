@@ -22,7 +22,7 @@ from django.conf.urls.static import static # new
 from my_app import views
 
 urlpatterns = [
-    path('home/', include("my_app.urls_home")),
+    path('', include("my_app.urls_home")),
     path('products/', include("my_app.urls_products")),
     path('account/', include("my_app.urls_account")),
     path('favorite-products/', views.FavoriteProductsPage, name='likedPage'),

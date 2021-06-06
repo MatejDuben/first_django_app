@@ -1,3 +1,10 @@
+"""
+!!!! IMPORTANT !!!!
+ - procuct means blog 
+ - example procust_title is simpli a title of blog
+"""
+
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
