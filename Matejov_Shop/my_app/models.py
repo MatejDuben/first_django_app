@@ -3,10 +3,10 @@ from django.contrib.auth.models import User
 from django.db.models.fields import TextField
 
 
-class Product(models.Model):
+class Blog(models.Model):
   product_title = models.CharField(max_length=200, verbose_name='nadpis Blogu')
   product_description = models.TextField(verbose_name='Text', blank=False)
-  product_image = models.ImageField(upload_to='uploaded_posts', blank=True, null=True, verbose_name='obrazok')
+  product_image = models.ImageField(upload_to='uploaded_posts', blank=False, null=True, verbose_name='obrazok')
 
 
   blog_description2 = models.TextField(verbose_name='Text2' , blank=True)
@@ -73,7 +73,7 @@ class Product(models.Model):
 
 class FavoriteProduct(models.Model):
   who_liked = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="použivatel ktorému sa to páči")
-  favorite_product = models.ManyToManyField(Product, related_name="favorite_post", verbose_name="blog ktorý sa mu páči")
+  favorite_product = models.ManyToManyField(Blog, related_name="favorite_post", verbose_name="blog ktorý sa mu páči")
   added_date = models.DateTimeField('date_added',)
 
   def __str__(self):

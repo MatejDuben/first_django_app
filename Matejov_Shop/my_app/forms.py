@@ -10,7 +10,7 @@ class CreateUserForm(UserCreationForm):
     model = User
     fields = ['username', 'email', 'password1', 'password2']
 
-class ProductForm(forms.ModelForm):
-  class Meta:
-    model = models.Product
-    fields = ['product_title', 'product_description', 'product_image']
+# class ProductForm(forms.ModelForm):
+#   class Meta:
+#     model = models.Blog
+#     fields = ['product_title', 'product_description', 'product_image']

@@ -64,19 +64,20 @@
 
            
             <div class="twoImgs__wrapper">
-              <figure class="article__img-fig">
-                <img src="{{product.blog_figure2.url}}" alt="">
-                <figcaption class="img__figcaption">
-                  Tu je napísaný kód, v ktorom je podmienka, že ak sa voláš Jožko, tak ťa pozdraví. Ak sa tak nevoláš, vypíše iné meno.
-                </figcaption>
-              </figure>
-  
+              {% if product.blog_figure2 != '' %}
+                <figure class="article__img-fig">
+                  <img src="{{product.blog_figure2.url}}" alt="">
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure2_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
               {% if product.blog_figure2_2 != '' %}  
                 <figure class="article__img-fig img2">
                   <img src="{{product.blog_figure2_2.url}}" alt="">
 
                   <figcaption class="img__figcaption">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis, possimus.
+                    {{product.blog_figure2_2_des}}
                   </figcaption>
                 </figure>
               {% endif %}
@@ -87,57 +88,209 @@
           {% endif %}
         {% if product.blog_description3 != '' %}
           <article class="article">
-        
             {{product.blog_description3}}
+
+            <div class="twoImgs__wrapper">
+              {% if product.blog_figure3 != '' %}
+                <figure class="article__img-fig">
+                  <img src="{{product.blog_figure3.url}}" alt="">
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure3_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+              {% if product.blog_figure3_2 != '' %}  
+                <figure class="article__img-fig img2">
+                  <img src="{{product.blog_figure3_2.url}}" alt="">
+
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure3_2_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+            </div>
           </article>
           {% endif %}
         {% if product.blog_description4 != '' %}
           <article class="article">
-        
             {{product.blog_description4}}
+            
+            <div class="twoImgs__wrapper">
+              {% if product.blog_figure4 != '' %}
+                <figure class="article__img-fig">
+                  <img src="{{product.blog_figure4.url}}" alt="">
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure4_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+              {% if product.blog_figure4_2 != '' %}  
+                <figure class="article__img-fig img2">
+                  <img src="{{product.blog_figure4_2.url}}" alt="">
+
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure4_2_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+            </div>
           </article>
         {% endif %}
         {% if product.blog_description5 != '' %}
           <article class="article">
-        
             {{product.blog_description5}}
+
+            <div class="twoImgs__wrapper">
+              {% if product.blog_figure5 != '' %}
+                <figure class="article__img-fig">
+                  <img src="{{product.blog_figure5.url}}" alt="">
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure5_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+              {% if product.blog_figure5_2 != '' %}  
+                <figure class="article__img-fig img2">
+                  <img src="{{product.blog_figure5_2.url}}" alt="">
+
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure5_2_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+            </div>
           </article>
         {% endif %}
         {% if product.blog_description6 != '' %}
           <article class="article">
-        
             {{product.blog_description6}}
+
+            <div class="twoImgs__wrapper">
+              {% if product.blog_figure6 != '' %}
+                <figure class="article__img-fig">
+                  <img src="{{product.blog_figure3.url}}" alt="">
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure6_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+              {% if product.blog_figure6_2 != '' %}  
+                <figure class="article__img-fig img2">
+                  <img src="{{product.blog_figure6_2.url}}" alt="">
+
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure6_2_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+            </div>
           </article>
         {% endif %}
         {% if product.blog_description7 != '' %}
           <article class="article">
-        
             {{product.blog_description7}}
+
+            <div class="twoImgs__wrapper">
+              {% if product.blog_figure7 != '' %}
+                <figure class="article__img-fig">
+                  <img src="{{product.blog_figure7.url}}" alt="">
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure7_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+              {% if product.blog_figure7_2 != '' %}  
+                <figure class="article__img-fig img2">
+                  <img src="{{product.blog_figure7_2.url}}" alt="">
+
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure7_2_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+            </div>
           </article>
         {% endif %}
         {% if product.blog_description8 != '' %}
           <article class="article">
-        
             {{product.blog_description8}}
+
+            <div class="twoImgs__wrapper">
+              {% if product.blog_figure8 != '' %}
+                <figure class="article__img-fig">
+                  <img src="{{product.blog_figure8.url}}" alt="">
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure8_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+              {% if product.blog_figure8_2 != '' %}  
+                <figure class="article__img-fig img2">
+                  <img src="{{product.blog_figure8_2.url}}" alt="">
+
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure8_2_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+            </div>
           </article>
         {% endif %}
         {% if product.blog_description9 != '' %}
           <article class="article">
-        
             {{product.blog_description9}}
+
+            <div class="twoImgs__wrapper">
+              {% if product.blog_figure9 != '' %}
+                <figure class="article__img-fig">
+                  <img src="{{product.blog_figure9.url}}" alt="">
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure9_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+              {% if product.blog_figure9_2 != '' %}  
+                <figure class="article__img-fig img2">
+                  <img src="{{product.blog_figure9_2.url}}" alt="">
+
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure9_2_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+            </div>
           </article>
         {% endif %}
         {% if product.blog_description10 != '' %}
           <article class="article">
-        
             {{product.blog_description10}}
+
+            <div class="twoImgs__wrapper">
+              {% if product.blog_figure10 != '' %}
+                <figure class="article__img-fig">
+                  <img src="{{product.blog_figure10.url}}" alt="">
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure10_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+              {% if product.blog_figure10_2 != '' %}  
+                <figure class="article__img-fig img2">
+                  <img src="{{product.blog_figure10_2.url}}" alt="">
+
+                  <figcaption class="img__figcaption">
+                    {{product.blog_figure10_2_des}}
+                  </figcaption>
+                </figure>
+              {% endif %}
+            </div>
           </article>
         {% endif %}
 
       </div>
 
       <!-- <div>
-        <img src="{{product.product_image.url}}" alt="" style="height: 500px; width: 500px;">
+        <img src="{{product.product_image}}" alt="" style="height: 500px; width: 500px;">
         
         <form action="" method="post" >
           {% csrf_token %}

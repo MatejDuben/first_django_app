@@ -17,8 +17,8 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.conf import settings
 
-from .models import Product, FavoriteProduct
-from .forms import CreateUserForm, ProductForm
+from .models import Blog, FavoriteProduct
+from .forms import CreateUserForm
 from .decorators import unauthenticated_page_for_logged_user, unauthenticated_page_for_unlogged_user
 
 import random
@@ -97,8 +97,10 @@ def logoutUser(request):
 
 def products(request):
 
-  p = Product.objects.all()
+  p = Blog.objects.all()
 
+  
+  
 
   context={
     "product": p,
@@ -109,11 +111,11 @@ def products(request):
 
 @unauthenticated_page_for_unlogged_user
 def productPage(request, product_id, product_title_url):
-  p = Product.objects.get(id=product_id)
+  p = Blog.objects.get(id=product_id)
   
   
   #kazdy refresh stranky sa stane toto 
-  products = Product.objects.all()
+  products = Blog.objects.all()
   random_three_products = random.choices(products, k=3)
  
   user = request.user
@@ -181,15 +183,16 @@ def contact_Page(request):
 
 def admin_properties(request):
   
-  if request.method == 'POST': 
-    form = ProductForm(request.POST, request.FILES) 
+  # if request.method == 'POST': 
+  #   form = ProductForm(request.POST, request.FILES) 
   
-    if form.is_valid(): 
-      form.save() 
-      return HttpResponse("<h1>"+'successfully uploaded'+'</h1>') 
-  else: 
-    form = ProductForm() 
-    return render(request, 'admin-page.html', {'form' : form}) 
+  #   if form.is_valid(): 
+  #     form.save() 
+  #     return HttpResponse("<h1>"+'successfully uploaded'+'</h1>') 
+  # else: 
+  #   form = ProductForm() 
+  #   return render(request, 'admin-page.html', {'form' : form}) 
+    return render(request, 'admin-page.html', {'form' : 'form'}) 
   
   
   
