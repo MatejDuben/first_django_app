@@ -23,7 +23,7 @@ from my_app import views
 
 urlpatterns = [
     path('', include("my_app.urls_home")),
-    path('products/', include("my_app.urls_products")),
+    path('blogs/', include("my_app.urls_blog")),
     path('account/', include("my_app.urls_account")),
     path('favorite-products/', views.FavoriteProductsPage, name='likedPage'),
     path('contact/', views.contact_Page, name='contactPage'),

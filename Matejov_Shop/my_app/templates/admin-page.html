@@ -1,9 +1,12 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Admin page</title>
+
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
 </head>
 <body>
   
@@ -12,11 +15,17 @@
       {% csrf_token %}
         {{form.as_p}}
       
-      <input type="submit" value="Submit">
+      <input type="submit" value="Save" class="submit-btn" >
 
     </form>
 
 
+  </div>
+
+  <div class="info_wrapper">
+    <p class="info">
+      V tejto sekcii môžete nastaviť len hlavný nadpis, halvný popis a halvný obrázok <br> pre nastavenie ďalšieho textu treba prejsť do Django Administration stránky.
+    </p>
   </div>
 
 </body>

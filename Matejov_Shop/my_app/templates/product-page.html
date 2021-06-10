@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{% static 'css/product-page-style.css' %}">
-
+  <link rel="stylesheet" href="{% static 'css/nav_bar.css' %}">
   
   <title>Product {{product.product_title}} </title>
 </head>
@@ -307,7 +307,9 @@
 
   </section>
 
-  <section class="sec2" style="display: none;">
+    <div class="blog_view__line"></div>
+
+  <section class="sec2" >
     <h2 class="more-info"><a href="{% url 'productPage:products' %}">Zisti viac</a></h2>
 
     <div class="otehr-products-container">

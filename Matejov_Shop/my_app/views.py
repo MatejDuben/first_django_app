@@ -18,7 +18,7 @@ from django.core.mail import send_mail
 from django.conf import settings
 
 from .models import Blog, FavoriteProduct
-from .forms import CreateUserForm
+from .forms import CreateUserForm, BlogForm
 from .decorators import unauthenticated_page_for_logged_user, unauthenticated_page_for_unlogged_user
 
 import random
@@ -183,16 +183,16 @@ def contact_Page(request):
 
 def admin_properties(request):
   
-  # if request.method == 'POST': 
-  #   form = ProductForm(request.POST, request.FILES) 
+  if request.method == 'POST': 
+    form = BlogForm(request.POST, request.FILES) 
   
-  #   if form.is_valid(): 
-  #     form.save() 
-  #     return HttpResponse("<h1>"+'successfully uploaded'+'</h1>') 
-  # else: 
-  #   form = ProductForm() 
-  #   return render(request, 'admin-page.html', {'form' : form}) 
-    return render(request, 'admin-page.html', {'form' : 'form'}) 
+    if form.is_valid(): 
+      form.save() 
+      return HttpResponse("<h1>"+'successfully uploaded'+'</h1>') 
+  else: 
+    form = BlogForm() 
+    return render(request, 'admin-page.html', {'form' : form}) 
+    
   
   
   
