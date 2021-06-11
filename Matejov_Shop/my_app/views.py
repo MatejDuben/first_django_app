@@ -99,11 +99,15 @@ def products(request):
 
   p = Blog.objects.all()
 
-  
-  
+  random_blog = random.choices(Blog.objects.all(), k=3)
+    
+  print(random_blog)
 
   context={
     "product": p,
+    'random_blog1': random_blog[0],
+    'random_blog2': random_blog[1],
+    'random_blog3': random_blog[2],
   }
   
   return render(request, 'products.html', context)

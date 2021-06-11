@@ -75,3 +75,12 @@
   top: 40px;
   font-size: 35px;
 }
+
+
+.fav__link{
+  color: black;
+  text-decoration: none;
+}
+.fav__link:hover{
+  text-decoration: underline;
+}

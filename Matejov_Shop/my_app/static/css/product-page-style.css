@@ -5,9 +5,15 @@
 }
 
 
-
-
-
+.logout-div{
+  text-align: right;
+  position: absolute;
+  right: 60px;
+}
+.logout-link{
+  text-decoration: none;
+  color: rgb(82, 81, 81);
+}
 
 .sec1{
   position: relative;
@@ -95,16 +101,19 @@
 }
 
 
-
+.like__wrapper{
+  position: relative;
+  left: 0px;
+  top: -40px;
+}
 
 
 .like-btn{
   
   text-indent: -99999;
   display: inline-block;
-  position: relative;
+  
   font-size: 30px;
-  left: 20px;
   height: 50px;
   width: 60px;
   background-image: url(../pic/iconfinder_heart_299063.png);

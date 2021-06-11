@@ -52,8 +52,9 @@
       <input type="radio" name="images" id="i2">
       <input type="radio" name="images" id="i3">
 
+      
       <div class="slide-img" id="one">
-        <img src="../static/pic/sliderimg1.jpg">
+        <a href="{% url 'productPage:thisProduct' random_blog1.id random_blog1.product_title %}"><img src="{{random_blog1.product_image.url}}"></a>
 
           <label for="i3" class="per"> 
             <h2> < </h2>
@@ -65,7 +66,7 @@
       </div>
 
       <div class="slide-img" id="two">
-        <img src="../static/pic/sliderimg2.jpg">
+        <a href="{% url 'productPage:thisProduct' random_blog2.id random_blog2.product_title %}"><img src="{{random_blog2.product_image.url}}"></a>
 
           <label for="i1" class="per"> 
             <h2> < </h2>
@@ -76,7 +77,7 @@
       </div>
 
       <div class="slide-img" id="three">
-        <img src="../static/pic/ma">
+        <a href="{% url 'productPage:thisProduct' random_blog3.id random_blog3.product_title %}"><img src="{{random_blog3.product_image.url}}"></a>
 
           <label for="i2" class="per"> 
             <h2> < </h2>
@@ -85,7 +86,7 @@
             <h2> > </h2>
           </label>
       </div>
-
+      
       <div class="container-nav">
         <label for="i1" class="dots" id="dot1"></label>
         <label for="i2" class="dots" id="dot2"></label>

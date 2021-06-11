@@ -45,7 +45,7 @@
     <section class="sec-1">
 
       <div class="latest-container" data-aos="flip-left">
-        <h2 >LATEST</h2>
+        <h2 >Najnovšie</h2>
 
             
         <div class="products">
@@ -67,7 +67,7 @@
 
     <section class="sec-2">
      
-      <h2 class="other-posts-h2" >Other Posts</h2>
+      <h2 class="other-posts-h2" >Ostatné články</h2>
       <div class="other-container" data-aos="fade-down">
         {% if object_not_exist %}
           <h1>You haven't liked products yet </h1>
@@ -76,7 +76,7 @@
           <div class="products">
             <ol class="product">
               {% for favorite in favorites %}
-                <li>{{favorite}}</li>
+                <li><a class="fav__link" href="{% url 'productPage:thisProduct' favorite.id favorite.product_title %}">{{favorite}}</a></li>
               {% endfor %}
             </ol>
           </div>
