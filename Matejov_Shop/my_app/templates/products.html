@@ -33,7 +33,7 @@
     <nav class="nav-bar">
       <ul class="nav-bar-text">
         <li><a href="{% url 'homePage:home' %}">Domov</a></li>
-        <li><a href="{% url 'productPage:products' %}" id="now_page">Produkty</a></li>
+        <li><a href="{% url 'blogPage:blog' %}" id="now_page">Produkty</a></li>
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto&display=swap" rel="stylesheet">
         <li><a href="{% url 'contactPage' %}">Kontakt</a></li>
         {% if user.is_authenticated %}
@@ -54,7 +54,7 @@
 
       
       <div class="slide-img" id="one">
-        <a href="{% url 'productPage:thisProduct' random_blog1.id random_blog1.product_title %}"><img src="{{random_blog1.product_image.url}}"></a>
+        <a href="{% url 'blogPage:thisBlog' random_blog1.id random_blog1.product_title %}"><img src="{{random_blog1.product_image.url}}"></a>
 
           <label for="i3" class="per"> 
             <h2> < </h2>
@@ -66,7 +66,7 @@
       </div>
 
       <div class="slide-img" id="two">
-        <a href="{% url 'productPage:thisProduct' random_blog2.id random_blog2.product_title %}"><img src="{{random_blog2.product_image.url}}"></a>
+        <a href="{% url 'blogPage:thisBlog' random_blog2.id random_blog2.product_title %}"><img src="{{random_blog2.product_image.url}}"></a>
 
           <label for="i1" class="per"> 
             <h2> < </h2>
@@ -77,7 +77,7 @@
       </div>
 
       <div class="slide-img" id="three">
-        <a href="{% url 'productPage:thisProduct' random_blog3.id random_blog3.product_title %}"><img src="{{random_blog3.product_image.url}}"></a>
+        <a href="{% url 'blogPage:thisBlog' random_blog3.id random_blog3.product_title %}"><img src="{{random_blog3.product_image.url}}"></a>
 
           <label for="i2" class="per"> 
             <h2> < </h2>
@@ -115,7 +115,7 @@
             <label for="">
               {% if user.is_authenticated %} <!-- ak je user prihlaseny ,moze kliknut na odkaz inak napoise error -->
               
-              <h1 class="product-title" ><a href="{% url 'productPage:thisProduct' p.id p.product_title %}"> {{p.product_title}}</a></h1>
+              <h1 class="product-title" ><a href="{% url 'blogPage:thisBlog' p.id p.product_title %}"> {{p.product_title}}</a></h1>
 
               {% else %}
               <h1 class="product-title" >{{p.product_title}}</h1>

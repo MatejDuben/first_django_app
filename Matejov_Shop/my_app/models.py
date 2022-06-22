@@ -71,7 +71,7 @@ class Blog(models.Model):
     return self.product_title
   
 
-class FavoriteProduct(models.Model):
+class FavoriteBlog(models.Model):
   who_liked = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="použivatel ktorému sa to páči")
   favorite_product = models.ManyToManyField(Blog, related_name="favorite_post", verbose_name="blog ktorý sa mu páči")
   added_date = models.DateTimeField('date_added',)

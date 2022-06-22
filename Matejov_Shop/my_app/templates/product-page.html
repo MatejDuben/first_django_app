@@ -27,7 +27,7 @@
     <nav class="nav-bar">
       <ul class="nav-bar-text">
         <li><a href="{% url 'homePage:home' %}">Domov</a></li>
-        <li><a href="{% url 'productPage:products' %}" >Produkty</a></li>
+        <li><a href="{% url 'blogPage:blog' %}" >Produkty</a></li>
         <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Roboto&display=swap" rel="stylesheet">
         <li><a href="{% url 'contactPage' %}">Kontakt</a></li>
         {% if user.is_authenticated %}
@@ -307,14 +307,14 @@
     <div class="blog_view__line"></div>
 
   <section class="sec2" >
-    <h2 class="more-info"><a href="{% url 'productPage:products' %}">Zisti viac</a></h2>
+    <h2 class="more-info"><a href="{% url 'blogPage:blog' %}">Zisti viac</a></h2>
 
     <div class="otehr-products-container">
 
       {% for p in sliderProducts %}
 
         <div class="img-container">
-          <a href="{% url 'productPage:thisProduct' p.id p.product_title %}"><img src="{{p.product_image.url}}" alt="" style="height: 300; width: 300px;"></a>
+          <a href="{% url 'blogPage:thisBlog' p.id p.product_title %}"><img src="{{p.product_image.url}}" alt="" style="height: 300; width: 300px;"></a>
           <h3 class="product-title">{{p}}</h3>
         </div>
       {% endfor %}

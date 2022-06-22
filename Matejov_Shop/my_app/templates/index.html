@@ -36,7 +36,7 @@
     <nav class="nav-bar">
       <ul class="nav-bar-text">
         <li><a href="{% url 'homePage:home' %}" id="now_page">Domov</a></li>
-        <li><a href="{% url 'productPage:products' %}">Produkty</a></li>
+        <li><a href="{% url 'blogPage:blog' %}">Produkty</a></li>
         <li><a href="{% url 'contactPage' %}">Kontakt</a></li>
         {% if user.is_authenticated %}
           <li><a href="{% url 'likedPage' %}" >Obľubené</a></li>
@@ -59,25 +59,25 @@
       <figure class="subimages" data-aos="fade-right" data-aos-duration="2000">
         <img src="../static/pic/alexandru-acea--WBYxmW4yuw-unsplash.jpg" alt="" style="width: 300px; height: 300px;">
         <figcaption>
-          <a href="#">Najlepší programátori</a>
-          <p> Danish jelly beans sweet pie topping soufflé. <br> Pudding apple pie caramels. </p>
+          <a href="{% url 'blogPage:blog' %}">Najlepší programátori</a>
+          
         </figcaption>
       </figure>
 
       <figure class="subimages" data-aos="fade-down" data-aos-duration="2000">
         <img src="../static/pic/stock-1863880_640.jpg" alt="" style="width: 300px; height: 300px;">
         <figcaption>
-          <a href="#">Najväčší zisk za rok</a>
+          <a href="{% url 'blogPage:blog' %}">zaujímavé články</a>
           <p>
-            Sesame snaps jelly jujubes cookie. <br>  I love tiramisu apple pie I love I love. </p>
+            
         </figcaption>
       </figure>
 
       <figure class="subimages" data-aos="fade-left" data-aos-duration="2000">
         <img src="../static/pic/adrien-VD9Hsvg3DVQ-unsplash.jpg" alt="" style="width: 300px; height: 300px;">
         <figcaption>
-          <a href="{% url 'productPage:products' %}">Nájdeš Tu</a>
-          <p> stranka sa zaoberá predávaním ... produktov </p>
+          <a href="{% url 'blogPage:blog' %}">Všetko to nájdeš tu</a>
+          
         </figcaption>
       </figure>
     </div>

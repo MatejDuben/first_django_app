@@ -17,7 +17,7 @@ from django.utils import timezone
 from django.core.mail import send_mail
 from django.conf import settings
 
-from .models import Blog, FavoriteProduct
+from .models import Blog, FavoriteBlog
 from .forms import CreateUserForm, BlogForm
 from .decorators import unauthenticated_page_for_logged_user, unauthenticated_page_for_unlogged_user
 
@@ -132,15 +132,15 @@ def productPage(request, product_id, product_title_url):
   }
 
   
-  if request.method == 'POST' and not FavoriteProduct.objects.filter(who_liked=user).exists(): #Toto vytvori usera a prida mu aj konkretny produkt do favorites
+  if request.method == 'POST' and not FavoriteBlog.objects.filter(who_liked=user).exists(): #Toto vytvori usera a prida mu aj konkretny produkt do favorites
     
-    FavoriteProduct.objects.create(who_liked=user, added_date=current_time).save()
-    favorite = get_object_or_404(FavoriteProduct, who_liked=user)
+    FavoriteBlog.objects.create(who_liked=user, added_date=current_time).save()
+    favorite = get_object_or_404(FavoriteBlog, who_liked=user)
     favorite.favorite_product.add(p)
     print(favorite)
     
-  elif request.method == 'POST' and FavoriteProduct.objects.filter(who_liked=user).exists(): #ak uz user je vytvoreny toto mu prida konkretny produkt do favorites
-    favorite = get_object_or_404(FavoriteProduct, who_liked=user)
+  elif request.method == 'POST' and FavoriteBlog.objects.filter(who_liked=user).exists(): #ak uz user je vytvoreny toto mu prida konkretny produkt do favorites
+    favorite = get_object_or_404(FavoriteBlog, who_liked=user)
     print( favorite)
     favorite.favorite_product.add(p)
 
@@ -153,15 +153,15 @@ def productPage(request, product_id, product_title_url):
 def FavoriteProductsPage(request):
   
   user = request.user  #zoberie pouzivatela ktory je teraz prihlaseny
-  #print(FavoriteProduct.objects.get(who_liked=user))
+  #print(FavoriteBlog.objects.get(who_liked=user))
 
-  logged_user = FavoriteProduct.objects.filter(who_liked=user).first()
+  logged_user = FavoriteBlog.objects.filter(who_liked=user).first()
 
-  object_not_exist = not FavoriteProduct.objects.filter(who_liked=user).exists()
+  object_not_exist = not FavoriteBlog.objects.filter(who_liked=user).exists()
   
   if request.method == 'GET':
 
-    if not FavoriteProduct.objects.filter(who_liked=user).exists():
+    if not FavoriteBlog.objects.filter(who_liked=user).exists():
       return render(request, 'fav-obj-not-found.html')
      # return  HttpResponse("<h1>"+"ERROR, any object here!"+"</h1>")
     else:
